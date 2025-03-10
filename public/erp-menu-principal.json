@@ -1,0 +1,84 @@
+[
+    {
+        "id": 1,
+        "nombre": "1",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-city",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 11,
+                "nombre": "Unidades",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Lista",
+                        "ruta": "unidad-medida.vista.todas",
+                        "url": "/",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "nombre": "Producto",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Lista",
+                        "ruta": "producto.vista.todas",
+                        "url": "/producto",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "nombre": "Compra",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Crear",
+                        "ruta": "compra-crear.vista.todas",
+                        "url": "/compra-crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 14,
+                "nombre": "Venta",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Crear",
+                        "ruta": "venta-crear.vista.todas",
+                        "url": "/venta-crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+/*HEADER LAYOUT PAGINA*/
+.header_layout_pagina {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 9;
+    padding: 0 15px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.layout_menu_hamburguesa_celular {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+
+    .layout_menu_hamburguesa_celular {
+        display: block;
+    }
+
+}

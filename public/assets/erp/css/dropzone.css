@@ -1,0 +1,100 @@
+.contenedor_dropzone {
+    border: 2px dashed #635BFF;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.contenedor_dropzone:hover {
+    background-color: #f1f1f1;
+}
+
+.dropzone_item {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    position: relative;
+}
+
+.dropzone_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.remove_button {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+}
+
+.dropzone_item:hover .remove_button {
+    display: block;
+}
+
+/*GRID*/
+.grid_instagram {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-gap: 16px;
+}
+
+.grid_instagram .item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e6eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grid_instagram .contenedor_imagen {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.grid_instagram .imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e6eb;
+}
+
+.grid_instagram .botones {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.imagene_seleccionada {
+    border: 2px solid #635BFF !important;
+}
+
+@media (max-width: 700px) {
+
+    .grid_instagram {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
+
+}

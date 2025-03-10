@@ -1,0 +1,154 @@
+/*TABLA CONTENIDO*/
+.tabla_contenido {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+    overflow-x: auto;
+}
+
+.contenedor_tabla {
+    overflow: hidden;
+    min-width: 100%;
+    display: inline-block;
+    border-radius: 12px;
+    border: 1px solid #e0e6eb;
+    border-collapse: collapse;
+}
+
+/*TABLA*/
+.tabla {
+    min-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th {
+    font-weight: 600;
+}
+
+.tabla a {
+    cursor: pointer;
+}
+
+.tabla tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.tabla tr:hover {
+    background-color: #eff4fa;
+}
+
+.tabla th,
+.tabla td {
+    padding: 12px 24px;
+    text-align: left;
+}
+
+.tabla tr:not(:last-child) td,
+.tabla th {
+    border-bottom: 1px solid #e0e6eb;
+}
+
+.estado {
+    font-size: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px
+}
+
+.centrar_iconos {
+    display: flex;
+    gap: 10px;
+}
+
+/*TABLA PARA ELIMINARD*/
+.tabla_eliminar {
+    width: 100%;
+    font-size: 13px;
+}
+
+.tabla_eliminar th,
+.tabla_eliminar td {
+    padding: 5px 5px;
+    text-align: left;
+}
+
+.tabla_eliminar .boton_eliminar {
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #FFCCDB;
+    color: #FF6692;
+}
+
+.tabla_eliminar .boton_activo {
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7ff5c0;
+    color: #19c678;
+}
+
+.tabla_eliminar .boton_eliminar:hover,
+.tabla_eliminar .boton_activo:hover {
+    filter: brightness(1.1);
+}
+
+.tabla_eliminar select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background-image: none;
+    padding-right: 0;
+}
+
+/*TABLA PARA PRECIOS*/
+.contenedor_lista_precios {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.contenedor_lista_precios input[type="number"],
+.contenedor_lista_precios input[type="date"] {
+    width: 100%;
+    min-width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.contenedor_lista_precios input:focus,
+.contenedor_lista_precios input:active {
+    outline: none;
+    box-shadow: none;
+    border-color: #635BFF;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.contenedor_lista_precios button {
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7ff5c0;
+    color: #19c678;
+}
+
+.contenedor_lista_precios button:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 900px) {
+
+    /*TABLA PARA PRECIOS*/
+    .contenedor_lista_precios {
+        flex-direction: column;
+    }
+}

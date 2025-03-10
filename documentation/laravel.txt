@@ -1,0 +1,42 @@
+composer create-project laravel/laravel paradita-market
+
+php artisan serve
+
+php artisan migrate
+
+*****************************************************************
+
+php artisan make:model Producto -mfsc
+
+php artisan make:model UnidadMedida -mfsc
+
+php artisan make:model Inventario -mfsc
+
+php artisan make:model Compra -mfsc
+php artisan make:model DetalleCompra -mfsc
+
+php artisan make:model Venta -mfsc
+php artisan make:model DetalleVenta -mfsc
+
+php artisan migrate:fresh --seed
+
+php artisan migrate:fresh
+
+php artisan make:model HistorialPrecioCompra -mfsc
+php artisan make:model HistorialPrecioVenta -mfsc
+php artisan make:model HistorialPrecio -mfsc
+
+*****************************************************************
+
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+
+npm install
+npm run dev / build
+
+*****************************************************************
+
+php artisan make:livewire UnidadMedidaLivewire
+php artisan make:livewire ProductoLivewire
+php artisan make:livewire CompraCrearLivewire
+php artisan make:livewire VentaCrearLivewire

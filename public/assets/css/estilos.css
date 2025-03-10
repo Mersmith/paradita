@@ -1,0 +1,166 @@
+.g_panel {
+    padding: 30px 30px;
+    margin-bottom: 20px;
+    background-color: white;
+    background-clip: border-box;
+    border: 1px solid #ebf1f6;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px -1px rgba(175, 182, 201, 0.2);
+}
+
+.g_panel_titulo {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #29343d;
+    font-weight: 600;
+}
+
+.g_boton {
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.g_boton:hover {
+    filter: brightness(1.1);
+}
+
+.g_boton_primary {
+    background-color: #635BFF;
+    color: white;
+}
+
+.g_boton_secondary {
+    background-color: #16CDC7;
+    color: white;
+}
+
+.g_boton_success {
+    background-color: #36c76c;
+    color: white;
+}
+
+.g_boton_info {
+    background-color: #46caeb;
+    color: white;
+}
+
+.g_boton_warning {
+    background-color: #F8C20A;
+    color: white;
+}
+
+.g_boton_danger {
+    background-color: #ff6692;
+    color: white;
+}
+
+.g_boton_light {
+    background-color: #eff4fa;
+    color: black;
+}
+
+.g_boton_darkt {
+    background-color: #0a2540;
+    color: white;
+}
+
+.g_activo {
+    color: #36C76C
+}
+
+.g_desactivado {
+    color: #FF6692
+}
+
+.g_accion_ver {
+    color: #F8C20A;
+}
+
+.g_accion_editar {
+    color: #46caeb;
+}
+
+.g_resaltar {
+    color: #29343d;
+}
+
+.g_inventario {
+    color: #fa417f;
+}
+
+
+.g_inferior {
+    color: #98A4AE;
+}
+
+.g_resumir {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.g_vacio {
+    width: 100%;
+    display: flex;
+    color: #29343d;
+    font-size: 12px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.g_fila {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-.5 * 30px);
+    margin-left: calc(-.5 * 30px);
+}
+
+.g_fila>* {
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(30px * .5);
+    padding-left: calc(30px * .5);
+}
+
+.g_columna_12 {
+    width: 100%;
+}
+
+.g_columna_8 {
+    width: 66.66666667%;
+}
+
+.g_columna_6 {
+    width: 50%;
+}
+
+.g_columna_4 {
+    width: 33.33333333%;
+}
+
+.g_margin_bottom_20 {
+    margin-bottom: 20px;
+}
+
+.g_padding_20 {
+    padding: 20px;
+}
+
+@media (max-width: 900px) {
+
+    .g_columna_8 {
+        width: 100%;
+    }
+
+    .g_columna_6 {
+        width: 100%;
+    }
+
+    .g_columna_4 {
+        width: 100%;
+    }
+
+}

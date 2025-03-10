@@ -1,0 +1,178 @@
+/*Formulario*/
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="password"],
+.formulario input[type="number"],
+.formulario input[type="date"],
+.formulario input[type="datetime-local"],
+.formulario input[type="tel"],
+.formulario input[type="color"],
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    /*background-color: rgb(245, 245, 245);*/
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.formulario input[type="checkbox"] {
+    /*background-color: rgb(245, 245, 245);*/
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #635BFF;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.formulario input[type=checkbox]:checked {
+    background-color: #635BFF;
+}
+
+.formulario *:disabled {
+    background-color: #f6f6f6 !important;
+    opacity: 1;
+}
+
+.formulario input[type="radio"] {
+    cursor: pointer;
+}
+
+.formulario input[type="color"] {
+    cursor: pointer;
+}
+
+.formulario input:focus,
+.formulario input:active,
+.formulario select:focus,
+.formulario select:active,
+.formulario textarea:focus,
+.formulario textarea:active {
+    outline: none;
+    box-shadow: none;
+    border-color: #635BFF;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/*LABEL*/
+.formulario label {
+    display: flex;
+    margin-bottom: .5rem;
+    font-weight: 600;
+    color: #29343d;
+    font-size: 14px;
+}
+
+.formulario .obligatorio {
+    color: #FF6692;
+    font-size: 8px;
+}
+
+.formulario .leyenda {
+    color: #98A4AE;
+    font-size: 12px;
+}
+
+.formulario .mensaje_error {
+    color: #FF6692;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/*FORMULARIO BOTONES*/
+.formulario_botones {
+    display: flex;
+    gap: 10px;
+}
+
+.formulario_botones button,
+.formulario_botones a,
+.formulario_botones input[type="submit"] {
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.formulario_botones button:hover,
+.formulario_botones a:hover,
+.formulario_botones input[type="submit"]:hover {
+    filter: brightness(1.1);
+}
+
+.formulario_botones .guardar {
+    background-color: #635BFF;
+    color: white;
+}
+
+.formulario_botones .cancelar {
+    background-color: #FFCCDB;
+    color: #FF6692;
+}
+
+.formulario_botones .agregar {
+    background-color: #dddbff;
+    color: #635BFF;
+}
+
+.boton_checkbox {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0px;
+}
+
+.boton_checkbox_deshabilitado {
+    background-color: #f6f6f6;
+}
+
+.boton_checkbox input {
+    margin-top: 3px;
+}
+
+.boton_checkbox label {
+    margin-bottom: 0px;
+}
+
+/*IMAGENES*/
+.formulario_grid_imagenes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-gap: 8px;
+}
+
+.formulario_grid_imagenes .item_grid_imagen {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e6eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.formulario_grid_imagenes .grid_contenedor_imagen {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.formulario_grid_imagenes .imagen_grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e6eb;
+}
+
+.formulario_grid_imagenes .grid_botones {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
