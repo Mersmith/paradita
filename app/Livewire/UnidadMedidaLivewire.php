@@ -2,56 +2,37 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\UnidadMedida;
+
 #[Layout('layouts.erp.layout-erp')]
 class UnidadMedidaLivewire extends Component
 {
-
     use WithPagination;
+    public $buscarUnidad;
 
-    public $nombre;
-    public $unidad_id;
-    public $modo_edicion = false;
+    protected $paginate = 20;
 
-    protected $rules = [
-        'nombre' => 'required|string|unique:unidad_medidas,nombre',
-    ];
-
-   
-
-    public function guardarUnidad() {
-        $this->validate();
-        UnidadMedida::create(['nombre' => $this->nombre]);
-        $this->reset('nombre');
-        session()->flash('message', 'Unidad de medida creada correctamente.');
+    public function updatingBuscarUnidad()
+    {
+        $this->resetPage();
     }
 
-    public function editarUnidad($id) {
-        $unidad = UnidadMedida::findOrFail($id);
-        $this->unidad_id = $unidad->id;
-        $this->nombre = $unidad->nombre;
-        $this->modo_edicion = true;
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
     }
 
-    public function actualizarUnidad() {
-        $this->validate();
-        $unidad = UnidadMedida::findOrFail($this->unidad_id);
-        $unidad->update(['nombre' => $this->nombre]);
-        $this->reset(['nombre', 'unidad_id', 'modo_edicion']);
-        session()->flash('message', 'Unidad de medida actualizada correctamente.');
-    }
+    public function render()
+    {
+        $unidades = UnidadMedida::where('nombre', 'like', '%' . $this->buscarUnidad . '%')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
 
-    public function eliminarUnidad($id) {
-        UnidadMedida::findOrFail($id)->delete();
-        session()->flash('message', 'Unidad de medida eliminada correctamente.');
-    }
-
-    public function render() {
         return view('livewire.unidad-medida-livewire', [
-            'unidades' => UnidadMedida::paginate(5),
+            'unidades' => $unidades,
         ]);
     }
 }

@@ -37,6 +37,9 @@ npm run dev / build
 *****************************************************************
 
 php artisan make:livewire UnidadMedidaLivewire
+php artisan make:livewire UnidadMedidaCrearLivewire
+php artisan make:livewire UnidadMedidaEditarLivewire
+
 php artisan make:livewire ProductoLivewire
 php artisan make:livewire ProductoCrearLivewire
 php artisan make:livewire ProductoEditarLivewire

@@ -24,6 +24,7 @@ class ProductoLivewire extends Component
     {
         $this->resetPage();
     }
+    
     public function render()
     {
         $productos = Producto::with('unidadMedida')

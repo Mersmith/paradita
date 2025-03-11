@@ -1,89 +1,86 @@
+@section('tituloPagina', 'Unidades de medida')
+
+@section('anchoPantalla', '100%')
+
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Unidades</h2>
+        <h2>Unidades de medida</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
-            <a href="#" class="g_boton g_boton_light">
+            <a href="{{ route('unidad-medida.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="#" class="g_boton g_boton_primary">
+            <a href="{{ route('unidad-medida.vista.crear') }}" class="g_boton g_boton_primary">
                 Crear <i class="fa-solid fa-square-plus"></i></a>
-        </div>
-    </div>
-
-    <!--FORMULARIO-->
-    <div class="formulario">
-        <div class="g_panel">
-            <div class="g_fila">
-                <div class="g_columna_12">
-
-                    <!--TITULO-->
-                    <h4 class="g_panel_titulo">Crear / Editar</h4>
-
-                    <div class="g_margin_bottom_20">
-                        <input type="text" wire:model="nombre" class="border p-2 w-full" placeholder="Nombre de la unidad">
-                        @error('nombre')
-                        <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div class="formulario_botones">
-                    <button wire:click="{{ $modo_edicion ? 'actualizarUnidad' : 'guardarUnidad' }}" class="guardar">
-                        {{ $modo_edicion ? 'Actualizar' : 'Guardar' }}
-                    </button>
-
-                    @if ($modo_edicion)
-                    <button wire:click="$set('modo_edicion', false)" class="cancelar">
-                        Cancelar
-                    </button>
-                    @endif
-                </div>
-            </div>
         </div>
     </div>
 
     <!--TABLA-->
     <div class="g_panel">
+        @if ($unidades->count())
+        <!--TABLA CABECERA-->
+        <div class="tabla_cabecera">
+            <!--TABLA CABECERA BOTONES-->
+            <div class="tabla_cabecera_botones">
+                <button>
+                    PDF <i class="fa-solid fa-file-pdf"></i>
+                </button>
+
+                <button>
+                    EXCEL <i class="fa-regular fa-file-excel"></i>
+                </button>
+            </div>
+
+            <!--TABLA CABECERA BUSCAR-->
+            <div class="tabla_cabecera_buscar">
+                <form action="">
+                    <input type="text" wire:model.live.debounce.1300ms="buscarUnidad" id="buscarUnidad" name="buscarUnidad" placeholder="Buscar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+            </div>
+        </div>
+
         <!--TABLA CONTENIDO-->
-        <div class="tabla_contenido">
+        <div class="tabla_contenido g_margin_bottom_20">
             <div class="contenedor_tabla">
-                <!--TABLA-->
                 <table class="tabla">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Nº</th>
                             <th>Nombre</th>
-                            <th>Acciones</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($unidades as $unidad)
+                        @foreach ($unidades as $item)
                         <tr>
-                            <td>{{ $unidad->id }}</td>
-                            <td>{{ $unidad->nombre }}</td>
-                            <td>
-                                <button wire:click="editarUnidad({{ $unidad->id }})" class="g_accion_editar">
+                            <td class="g_resaltar"> {{ $loop->iteration }} </td>
+                            <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
+                            <td class="centrar_iconos">
+                                <a href="{{ route('unidad-medida.vista.editar', $item->id) }}" class="g_accion_editar">
                                     <span><i class="fa-solid fa-pencil"></i></span>
-                                </button>
-                                <button wire:click="eliminarUnidad({{ $unidad->id }})" class="g_desactivado">
-                                    <span><i class="fa-solid fa-trash-can"></i></span>
-                                </button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
-                <div class="mt-4">
-                    {{ $unidades->links() }}
-                </div>
             </div>
         </div>
+
+        @if ($unidades->hasPages())
+        <div>
+            {{ $unidades->onEachSide(1)->links() }}
+        </div>
+        @endif
+        @else
+        <div class="g_vacio">
+            <p>No hay elementos.</p>
+            <i class="fa-regular fa-face-grin-wink"></i>
+        </div>
+        @endif
     </div>
 </div>
