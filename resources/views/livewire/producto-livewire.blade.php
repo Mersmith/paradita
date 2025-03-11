@@ -1,3 +1,7 @@
+@section('tituloPagina', 'Productos')
+
+@section('anchoPantalla', '100%')
+
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
@@ -6,79 +10,83 @@
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
-            <a href="#" class="g_boton g_boton_light">
+            <a href="{{ route('producto.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="#" class="g_boton g_boton_primary">
+            <a href="{{ route('producto.vista.crear') }}" class="g_boton g_boton_primary">
                 Crear <i class="fa-solid fa-square-plus"></i></a>
         </div>
     </div>
 
-    @if (session()->has('message'))
-    <div class="bg-green-100 text-green-700 p-2 rounded">
-        {{ session('message') }}
-    </div>
-    @endif
+    <!--TABLA-->
+    <div class="g_panel">
+        @if ($productos->count())
+        <!--TABLA CABECERA-->
+        <div class="tabla_cabecera">
+            <!--TABLA CABECERA BOTONES-->
+            <div class="tabla_cabecera_botones">
+                <button>
+                    PDF <i class="fa-solid fa-file-pdf"></i>
+                </button>
 
-    <button wire:click="crear()" class="bg-blue-500 text-white px-4 py-2 rounded">Nuevo Producto</button>
+                <button>
+                    EXCEL <i class="fa-regular fa-file-excel"></i>
+                </button>
+            </div>
 
-    <table class="w-full mt-4 border">
-        <thead>
-            <tr class="bg-gray-100">
-                <th class="border px-4 py-2">ID</th>
-                <th class="border px-4 py-2">Nombre</th>
-                <th class="border px-4 py-2">Unidad Base</th>
-                <th class="border px-4 py-2">Precio Compra</th> <!-- Nuevo campo -->
-                <th class="border px-4 py-2">precio Venta</th> <!-- Nuevo campo -->
-                <th class="border px-4 py-2">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($productos as $producto)
-            <tr>
-                <td class="border px-4 py-2">{{ $producto->id }}</td>
-                <td class="border px-4 py-2">{{ $producto->nombre }}</td>
-                <td class="border px-4 py-2">{{ $producto->unidadMedida?->nombre }}</td>
-                <td class="border px-4 py-2">{{ number_format($producto->precio_compra, 2) }}</td> <!-- Mostrar precio_venta -->
-                <td class="border px-4 py-2">{{ number_format($producto->precio_venta, 2) }}</td> <!-- Mostrar precio_venta -->
-                <td class="border px-4 py-2">
-                    <button wire:click="editar({{ $producto->id }})" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</button>
-                    <button wire:click="eliminar({{ $producto->id }})" class="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-
-    </table>
-
-    @if ($modal)
-    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white p-6 rounded">
-            <h2 class="text-lg font-bold">{{ $producto_id ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
-
-            <input type="text" wire:model="nombre" placeholder="Nombre" class="w-full border p-2 mt-2">
-            @error('nombre') <span class="text-red-500">{{ $message }}</span> @enderror
-
-            <select wire:model="unidad_medida_id" class="w-full border p-2 mt-2">
-                <option value="">Seleccione una unidad</option>
-                @foreach($unidades as $unidad)
-                <option value="{{ $unidad->id }}">{{ $unidad->nombre }}</option>
-                @endforeach
-            </select>
-            @error('unidad_medida_id') <span class="text-red-500">{{ $message }}</span> @enderror
-
-            <input type="number" wire:model="precio_compra" placeholder="precio_compra" class="w-full border p-2 mt-2">
-            @error('precio_compra') <span class="text-red-500">{{ $message }}</span> @enderror
-
-            <input type="number" wire:model="precio_venta" placeholder="precio_venta" class="w-full border p-2 mt-2">
-            @error('precio_venta') <span class="text-red-500">{{ $message }}</span> @enderror
-
-
-            <div class="mt-4">
-                <button wire:click="guardar()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
-                <button wire:click="cerrarModal()" class="bg-gray-500 text-white px-4 py-2 rounded">Cerrar</button>
+            <!--TABLA CABECERA BUSCAR-->
+            <div class="tabla_cabecera_buscar">
+                <form action="">
+                    <input type="text" wire:model.live.debounce.1300ms="buscarProducto" id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
             </div>
         </div>
+
+        <!--TABLA CONTENIDO-->
+        <div class="tabla_contenido g_margin_bottom_20">
+            <div class="contenedor_tabla">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Nombre</th>
+                            <th>Unidad</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($productos as $item)
+                        <tr>
+                            <td class="g_resaltar"> {{ $loop->iteration }} </td>
+                            <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
+                            <td class="g_resaltar"> {{ $item->unidadMedida->nombre ?? 'Sin unidad' }} </td>
+                            <td class="g_inferior g_resumir"> {{ $item->precio_compra }} </td>
+                            <td class="g_inferior g_resumir"> {{ $item->precio_venta }} </td>
+                            <td class="centrar_iconos">
+                                <a href="{{ route('producto.vista.editar', $item->id) }}" class="g_accion_editar">
+                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @if ($productos->hasPages())
+        <div>
+            {{ $productos->onEachSide(1)->links() }}
+        </div>
+        @endif
+        @else
+        <div class="g_vacio">
+            <p>No hay elementos.</p>
+            <i class="fa-regular fa-face-grin-wink"></i>
+        </div>
+        @endif
     </div>
-    @endif
 </div>
