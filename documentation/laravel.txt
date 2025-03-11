@@ -43,5 +43,8 @@ php artisan make:livewire UnidadMedidaEditarLivewire
 php artisan make:livewire ProductoLivewire
 php artisan make:livewire ProductoCrearLivewire
 php artisan make:livewire ProductoEditarLivewire
+
+php artisan make:livewire InventarioLivewire
+
 php artisan make:livewire CompraCrearLivewire
 php artisan make:livewire VentaCrearLivewire

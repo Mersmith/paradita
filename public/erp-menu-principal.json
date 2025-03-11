@@ -10,74 +10,47 @@
             {
                 "id": 11,
                 "nombre": "Unidades",
-                "ruta": "#",
-                "url": "#",
+                "ruta": "unidad-medida.vista.todas",
+                "url": "/",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 111,
-                        "nombre": "Lista",
-                        "ruta": "unidad-medida.vista.todas",
-                        "url": "/",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
+                "submenus": []
             },
             {
                 "id": 12,
                 "nombre": "Producto",
-                "ruta": "#",
-                "url": "#",
+                "ruta": "producto.vista.todas",
+                "url": "/producto",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 111,
-                        "nombre": "Lista",
-                        "ruta": "producto.vista.todas",
-                        "url": "/producto",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
+                "submenus": []
             },
             {
                 "id": 13,
-                "nombre": "Compra",
-                "ruta": "#",
-                "url": "#",
+                "nombre": "Inventario",
+                "ruta": "inventario.vista.todas",
+                "url": "/inventario",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 111,
-                        "nombre": "Crear",
-                        "ruta": "compra-crear.vista.todas",
-                        "url": "/compra-crear",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
+                "submenus": []
             },
             {
                 "id": 14,
-                "nombre": "Venta",
-                "ruta": "#",
-                "url": "#",
+                "nombre": "Compra",
+                "ruta": "compra-crear.vista.todas",
+                "url": "/compra-crear",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 111,
-                        "nombre": "Crear",
-                        "ruta": "venta-crear.vista.todas",
-                        "url": "/venta-crear",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
+                "submenus": []
+            },
+            {
+                "id": 15,
+                "nombre": "Venta",
+                "ruta": "venta-crear.vista.todas",
+                "url": "/venta-crear",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

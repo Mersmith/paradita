@@ -7,6 +7,7 @@ use App\Livewire\UnidadMedidaEditarLivewire;
 use App\Livewire\ProductoLivewire;
 use App\Livewire\ProductoCrearLivewire;
 use App\Livewire\ProductoEditarLivewire;
+use App\Livewire\InventarioLivewire;
 use App\Livewire\CompraCrearLivewire;
 use App\Livewire\VentaCrearLivewire;
 
@@ -31,6 +32,8 @@ Route::get('/unidad-medida/editar/{id}', UnidadMedidaEditarLivewire::class)->nam
 Route::get('/producto', ProductoLivewire::class)->name('producto.vista.todas');//ok
 Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');//ok
 Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');//ok
+
+Route::get('/inventario', InventarioLivewire::class)->name('inventario.vista.todas');//ok
 
 Route::get('/compra-crear', CompraCrearLivewire::class)->name('compra-crear.vista.todas');//ok
 Route::get('/venta-crear', VentaCrearLivewire::class)->name('venta-crear.vista.todas');//ok
