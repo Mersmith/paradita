@@ -68,11 +68,23 @@ class CompraDetalleEditarLivewire extends Component
             'detalles.*.cantidad' => 'required|numeric|min:0.01',
             'detalles.*.precio_compra' => 'required|numeric|min:0.01',
         ]);
-
+    
         // Actualizar la compra
         $this->compra->update(['fecha' => $this->fecha]);
-
-        // Guardar detalles
+    
+        // Obtener los IDs de los detalles actuales en la base de datos
+        $detallesExistentes = $this->compra->detalleCompras->pluck('id')->toArray();
+    
+        // Obtener los IDs de los detalles enviados desde la interfaz
+        $detallesEnviados = collect($this->detalles)->pluck('id')->filter()->toArray();
+    
+        // Identificar los detalles que deben eliminarse (existen en la BD pero no en la interfaz)
+        $detallesAEliminar = array_diff($detallesExistentes, $detallesEnviados);
+        
+        // Eliminar los detalles que ya no están en la lista
+        DetalleCompra::whereIn('id', $detallesAEliminar)->delete();
+    
+        // Guardar o actualizar detalles
         foreach ($this->detalles as $detalle) {
             if ($detalle['id']) {
                 // Actualizar detalle existente
@@ -90,14 +102,16 @@ class CompraDetalleEditarLivewire extends Component
                     'producto_id' => $detalle['producto_id'],
                     'unidad_medida_id' => $detalle['unidad_medida_id'],
                     'cantidad' => $detalle['cantidad'],
+                    'cantidad_convertida' => $detalle['cantidad'], // Ajusta según la lógica de conversión
                     'precio_unitario' => $detalle['precio_compra'],
                     'precio_total' => $detalle['cantidad'] * $detalle['precio_compra'],
-                ]);
+                ]);                
             }
         }
-
+    
         session()->flash('message', 'Compra actualizada con éxito.');
     }
+    
 
     public function updatedDetalles($value, $key)
     {

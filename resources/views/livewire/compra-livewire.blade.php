@@ -10,10 +10,10 @@
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
-            <a href="{{ route('producto.vista.todas') }}" class="g_boton g_boton_light">
+            <a href="{{ route('compra.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="{{ route('producto.vista.crear') }}" class="g_boton g_boton_primary">
+            <a href="{{ route('compra-crear.vista.crear') }}" class="g_boton g_boton_primary">
                 Crear <i class="fa-solid fa-square-plus"></i></a>
         </div>
     </div>
