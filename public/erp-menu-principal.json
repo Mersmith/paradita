@@ -37,8 +37,8 @@
             {
                 "id": 14,
                 "nombre": "Compra",
-                "ruta": "compra-crear.vista.todas",
-                "url": "/compra-crear",
+                "ruta": "compra.vista.todas",
+                "url": "/compra",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []

@@ -46,5 +46,10 @@ php artisan make:livewire ProductoEditarLivewire
 
 php artisan make:livewire InventarioLivewire
 
+php artisan make:livewire CompraLivewire
+php artisan make:livewire CompraDetalleLivewire
+php artisan make:livewire CompraDetalleEditarLivewire
 php artisan make:livewire CompraCrearLivewire
+
+
 php artisan make:livewire VentaCrearLivewire

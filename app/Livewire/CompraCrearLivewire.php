@@ -83,14 +83,14 @@ class CompraCrearLivewire extends Component
             ]);
 
             // Actualizar inventario
-            $inventario = Inventario::where('producto_id', $detalle['producto_id'])->first();
+            /*$inventario = Inventario::where('producto_id', $detalle['producto_id'])->first();
             if ($inventario) {
                 $inventario->stock += $cantidad_convertida;
                 $inventario->save();
-            }
+            }*/
         }
 
-        session()->flash('message', 'Compra registrada con éxito.');
+        //session()->flash('message', 'Compra registrada con éxito.');
         //return redirect()->route('compras');
     }
 

@@ -8,6 +8,9 @@ use App\Livewire\ProductoLivewire;
 use App\Livewire\ProductoCrearLivewire;
 use App\Livewire\ProductoEditarLivewire;
 use App\Livewire\InventarioLivewire;
+use App\Livewire\CompraLivewire;
+use App\Livewire\CompraDetalleLivewire;
+use App\Livewire\CompraDetalleEditarLivewire;
 use App\Livewire\CompraCrearLivewire;
 use App\Livewire\VentaCrearLivewire;
 
@@ -35,5 +38,9 @@ Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('produc
 
 Route::get('/inventario', InventarioLivewire::class)->name('inventario.vista.todas');//ok
 
-Route::get('/compra-crear', CompraCrearLivewire::class)->name('compra-crear.vista.todas');//ok
+Route::get('/compra', CompraLivewire::class)->name('compra.vista.todas');//ok
+Route::get('/compra-crear', CompraCrearLivewire::class)->name('compra-crear.vista.crear');//ok
+Route::get('/compra/{id}/detalle', CompraDetalleLivewire::class)->name('compra-detalle.vista.ver');//ok
+Route::get('/compra/editar/{id}/detalle', CompraDetalleEditarLivewire::class)->name('compra-detalle.vista.editar');//ok
+
 Route::get('/venta-crear', VentaCrearLivewire::class)->name('venta-crear.vista.todas');//ok
