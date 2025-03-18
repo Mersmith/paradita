@@ -32,8 +32,21 @@
                             <input type="date" id="fecha" name="fecha" wire:model="fecha">
                             @error('fecha') <p class="mensaje_error">{{ $message }}</p> @enderror
                         </div>
+
+                        <div class="g_margin_bottom_20">
+                            <label for="estado">Estado <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                            <select id="estado" name="estado" wire:model="estado">
+                                <option value="borrador">Borrador</option>
+                                <option value="confirmado" disabled>Confirmado</option>
+                                <option value="cancelado" disabled>Cancelado</option>
+                                <option value="eliminado" disabled>Eliminado</option>
+                            </select>
+                            @error('estado') <p class="mensaje_error">{{ $message }}</p> @enderror
+                        </div>
                     </div>
                 </div>
+
+
             </div>
 
             <!--TABLA-->
@@ -127,7 +140,7 @@
 
             <div class="formulario_botones">
                 <button type="button" wire:click="agregarDetalle">➕ Agregar Producto</button>
-                <button type="submit" class="guardar">Guardar Compra</button>
+                <button type="submit" class="guardar">Guardar como borrador</button>
             </div>
         </form>
     </div>

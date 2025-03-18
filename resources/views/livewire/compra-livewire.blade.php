@@ -64,8 +64,8 @@
                                     <span><i class="fa-solid fa-pencil"></i></span>
                                 </a>
 
-                                <a href="{{ route('compra-detalle.vista.ver', $item->id) }}" class="g_accion_editar">
-                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                <a href="{{ route('compra-detalle.vista.ver', $item->id) }}" class="g_accion_ver">
+                                    <span><i class="fa-solid fa-eye"></i></span>
                                 </a>
                             </td>
                         </tr>

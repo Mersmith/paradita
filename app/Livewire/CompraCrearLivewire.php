@@ -16,6 +16,7 @@ class CompraCrearLivewire extends Component
 {
     public $productos, $unidades, $fecha, $compra_id;
     public $detalles = []; // Lista de productos comprados
+    public $estado = 'borrador'; 
 
     public function mount()
     {
@@ -54,6 +55,7 @@ class CompraCrearLivewire extends Component
     {
         $this->validate([
             'fecha' => 'required|date',
+            'estado' => 'required|in:borrador,confirmado,cancelado,eliminado', // Validar estados permitidos
             'detalles' => 'required|array|min:1',
             'detalles.*.producto_id' => 'required|exists:productos,id',
             'detalles.*.unidad_medida_id' => 'required|exists:unidad_medidas,id',
@@ -62,7 +64,10 @@ class CompraCrearLivewire extends Component
         ]);
 
         // Crear la compra
-        $compra = Compra::create(['fecha' => $this->fecha]);
+        $compra = Compra::create([
+            'fecha' => $this->fecha,
+            'estado' => $this->estado, // Guardar el estado seleccionado
+        ]);
 
         // Guardar los detalles de la compra y actualizar el inventario
         foreach ($this->detalles as $detalle) {
@@ -80,18 +85,10 @@ class CompraCrearLivewire extends Component
                 'cantidad_convertida' => $cantidad_convertida,
                 'precio_unitario' => $detalle['precio_compra'],
                 'precio_total' => $detalle['cantidad'] * $detalle['precio_compra'],
-            ]);
-
-            // Actualizar inventario
-            /*$inventario = Inventario::where('producto_id', $detalle['producto_id'])->first();
-            if ($inventario) {
-                $inventario->stock += $cantidad_convertida;
-                $inventario->save();
-            }*/
+            ]);          
         }
 
-        //session()->flash('message', 'Compra registrada con éxito.');
-        //return redirect()->route('compras');
+        $this->dispatch('alertaLivewire', "Creado");
     }
 
     public function updatedDetalles($value, $key)

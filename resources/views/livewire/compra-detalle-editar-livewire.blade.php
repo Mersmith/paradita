@@ -19,8 +19,18 @@
                         <h4 class="g_panel_titulo">General</h4>
                         <div class="g_margin_bottom_20">
                             <label for="fecha">Fecha <span class="obligatorio">*</span></label>
-                            <input type="date" id="fecha" wire:model="fecha">
+                            <input type="date" id="fecha" wire:model.live="fecha">
                             @error('fecha') <p class="mensaje_error">{{ $message }}</p> @enderror
+                        </div>
+
+                        <div class="g_margin_bottom_20">
+                            <label for="estado">Estado <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                            <select id="estado" wire:model.live="estado">
+                                @foreach ($estadosDisponibles as $estadoDisponible)
+                                <option value="{{ $estadoDisponible }}">{{ ucfirst($estadoDisponible) }}</option>
+                                @endforeach
+                            </select>
+                            @error('estado') <p class="mensaje_error">{{ $message }}</p> @enderror
                         </div>
                     </div>
                 </div>
@@ -49,7 +59,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td> <!-- N° automático -->
                                 <td>
-                                    <select wire:model.live="detalles.{{ $index }}.producto_id">
+                                    <select wire:model.live="detalles.{{ $index }}.producto_id" @disabled($estado !=='borrador' )>
                                         <option value="">Seleccione</option>
                                         @foreach ($productos as $producto)
                                         <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
@@ -57,7 +67,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select wire:model.live="detalles.{{ $index }}.unidad_medida_id">
+                                    <select wire:model.live="detalles.{{ $index }}.unidad_medida_id" @disabled($estado !=='borrador' )>
                                         <option value="">Seleccione</option>
                                         @foreach ($unidades as $unidad)
                                         <option value="{{ $unidad->id }}" {{ $unidad->id == $detalle['unidad_medida_id'] ? 'selected' : '' }}>
@@ -66,19 +76,17 @@
                                         @endforeach
                                     </select>
                                 </td>
-
                                 <td>
-                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.cantidad">
+                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.cantidad" @disabled($estado !=='borrador' )>
                                 </td>
                                 <td>
-                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.precio_compra">
+                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.precio_compra" @disabled($estado !=='borrador' )>
                                 </td>
-
                                 <td>
                                     {{ number_format($detalle['cantidad'] * $detalle['precio_compra'], 2) }}
                                 </td>
                                 <td>
-                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.precio_venta">
+                                    <input type="number" step="0.01" wire:model.live="detalles.{{ $index }}.precio_venta" @disabled($estado !=='borrador' )>
                                 </td>
                                 <td>
                                     {{ number_format($detalle['cantidad'] * $detalle['precio_venta'], 2) }}
@@ -87,9 +95,9 @@
                                     <strong>
                                         {{ number_format(($detalle['precio_venta'] - $detalle['precio_compra']) * $detalle['cantidad'], 2) }}
                                     </strong>
-                                </td> <!-- Nueva columna -->
+                                </td>
                                 <td>
-                                    <button type="button" wire:click="eliminarDetalle({{ $index }})">❌</button>
+                                    <button type="button" wire:click="eliminarDetalle({{ $index }})" @disabled($estado !=='borrador' )>❌</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -107,15 +115,17 @@
                                 <td></td>
                             </tr>
                         </tfoot>
-
                     </table>
-                    
+
                 </div>
             </div>
 
             <div class="formulario_botones">
+                @if($estado == 'borrador')
                 <button type="button" wire:click="agregarDetalle">➕ Agregar Producto</button>
-                <button type="submit" class="guardar">Guardar Cambios</button>
+                @endif
+
+                <button type="submit" class="guardar" @disabled($estado =='confirmado' )>Guardar Cambios</button>
             </div>
         </form>
     </div>

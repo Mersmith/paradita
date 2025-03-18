@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->date('fecha');
+            $table->enum('estado', ['borrador', 'confirmado', 'cancelado', 'eliminado'])->default('borrador');
             
             $table->timestamps();
         });

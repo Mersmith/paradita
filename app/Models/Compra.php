@@ -10,7 +10,7 @@ class Compra extends Model
     /** @use HasFactory<\Database\Factories\CompraFactory> */
     use HasFactory;
 
-    protected $fillable = ['fecha'];
+    protected $fillable = ['fecha', 'estado'];
 
     public function detalleCompras()
     {
