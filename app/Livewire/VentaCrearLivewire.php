@@ -2,14 +2,14 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Models\Venta;
 use App\Models\DetalleVenta;
-use App\Models\Producto;
 use App\Models\Inventario;
+use App\Models\Producto;
 use App\Models\UnidadMedida;
+use App\Models\Venta;
 use Carbon\Carbon;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.erp.layout-erp')]
 class VentaCrearLivewire extends Component
@@ -23,7 +23,7 @@ class VentaCrearLivewire extends Component
         $this->unidades = UnidadMedida::all();
         $this->fecha = Carbon::now()->format('Y-m-d');
         $this->detalles = [
-            ['producto_id' => '', 'unidad_medida_id' => '', 'cantidad' => 1, 'precio_venta' => 0]
+            ['producto_id' => '', 'unidad_medida_id' => '', 'cantidad' => 1, 'precio_venta' => 0],
         ];
     }
 
@@ -82,15 +82,14 @@ class VentaCrearLivewire extends Component
             }
         }
 
-        session()->flash('message', 'Venta registrada con éxito.');
-        //return redirect()->route('ventas');
+        $this->dispatch('alertaLivewire', "Creado");
     }
 
     public function updatedDetalles($value, $key)
     {
         // Extraer el índice y el campo del detalle modificado
         [$index, $field] = explode('.', $key);
-    
+
         // Si el campo modificado es 'producto_id', actualizar 'unidad_medida_id' y 'precio_venta'
         if ($field === 'producto_id') {
             $producto = Producto::find($value);
@@ -101,6 +100,18 @@ class VentaCrearLivewire extends Component
         }
     }
 
+    public function getTotalCantidadProperty()
+    {
+        return collect($this->detalles)->sum('cantidad');
+    }
+
+    public function getTotalSubtotalVentaProperty()
+    {
+        return collect($this->detalles)->sum(function ($detalle) {
+            return $detalle['cantidad'] * $detalle['precio_venta'];
+        });
+    }
+    
     public function render()
     {
         return view('livewire.venta-crear-livewire');

@@ -28,7 +28,7 @@
                     <div class="g_panel">
                         <h4 class="g_panel_titulo">General</h4>
                         <!--NOMBRE-->
-                        <div class="g_margin_bottom_20">
+                        <div class="">
                             <label for="nombre">Fecha <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                             <input type="date" id="fecha" name="fecha" wire:model="fecha">
                             @error('fecha') <p class="mensaje_error">{{ $message }}</p> @enderror
@@ -46,8 +46,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <!--TABLA-->
