@@ -51,5 +51,5 @@ php artisan make:livewire CompraDetalleLivewire
 php artisan make:livewire CompraDetalleEditarLivewire
 php artisan make:livewire CompraCrearLivewire
 
-
+php artisan make:livewire VentaLivewire
 php artisan make:livewire VentaCrearLivewire

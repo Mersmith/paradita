@@ -46,8 +46,8 @@
             {
                 "id": 15,
                 "nombre": "Venta",
-                "ruta": "venta-crear.vista.todas",
-                "url": "/venta-crear",
+                "ruta": "venta.vista.todas",
+                "url": "/venta",
                 "icono": "fa-solid fa-money-bill-1-wave",
                 "nivel": 2,
                 "submenus": []

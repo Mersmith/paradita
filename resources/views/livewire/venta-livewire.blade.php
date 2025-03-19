@@ -1,0 +1,121 @@
+@section('tituloPagina', 'Ventas')
+
+@section('anchoPantalla', '100%')
+
+<div>
+    <!--CABECERA TITULO PAGINA-->
+    <div class="g_panel cabecera_titulo_pagina">
+        <!--TITULO-->
+        <h2>Compras</h2>
+
+        <!--BOTONES-->
+        <div class="cabecera_titulo_botones">
+            <a href="{{ route('venta.vista.todas') }}" class="g_boton g_boton_light">
+                Inicio <i class="fa-solid fa-house"></i></a>
+
+            <a href="{{ route('venta-crear.vista.crear') }}" class="g_boton g_boton_primary">
+                Crear <i class="fa-solid fa-square-plus"></i></a>
+        </div>
+    </div>
+
+    <!--FORMULARIO-->
+    <div class="formulario">
+        <div class="g_fila">
+            <div class="g_columna_12">
+                <div class="g_panel">
+                    <div class="g_fila">
+                        <div class="g_columna_6">
+                            <div class="">
+                                <!-- FILTRO POR FECHAS -->
+                                <div class="tabla_cabecera_filtros">
+                                    <label for="fechaInicio">Desde:</label>
+                                    <input type="date" wire:model.live="fechaInicio" id="fechaInicio">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_6">
+                            <div class="">
+                                <!-- FILTRO POR FECHAS -->
+                                <div class="tabla_cabecera_filtros">
+                                    <label for="fechaFin">Hasta:</label>
+                                    <input type="date" wire:model.live="fechaFin" id="fechaFin">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TABLA-->
+    <div class="g_panel">
+        @if ($ventas->count())
+        <!--TABLA CABECERA-->
+        <div class="tabla_cabecera">
+            <!--TABLA CABECERA BOTONES-->
+            <div class="tabla_cabecera_botones">
+                <button>
+                    PDF <i class="fa-solid fa-file-pdf"></i>
+                </button>
+
+                <button>
+                    EXCEL <i class="fa-regular fa-file-excel"></i>
+                </button>
+            </div>
+
+            <!--TABLA CABECERA BUSCAR-->
+            <div class="tabla_cabecera_buscar">
+                <form action="">
+                    <input type="text" wire:model.live.debounce.1300ms="buscarVenta" id="buscarVenta" name="buscarVenta" placeholder="Buscar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+            </div>
+        </div>
+
+        <!--TABLA CONTENIDO-->
+        <div class="tabla_contenido g_margin_bottom_20">
+            <div class="contenedor_tabla">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Fecha</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ventas as $item)
+                        <tr>
+                            <td class="g_resaltar"> {{ $loop->iteration }} </td>
+                            <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->created_at }}</td>
+                            <td class="centrar_iconos">
+                                <a href="{{ route('compra-detalle.vista.editar', $item->id) }}" class="g_accion_editar">
+                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                </a>
+
+                                <a href="{{ route('compra-detalle.vista.ver', $item->id) }}" class="g_accion_ver">
+                                    <span><i class="fa-solid fa-eye"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @if ($ventas->hasPages())
+        <div>
+            {{ $ventas->onEachSide(1)->links() }}
+        </div>
+        @endif
+        @else
+        <div class="g_vacio">
+            <p>No hay elementos.</p>
+            <i class="fa-regular fa-face-grin-wink"></i>
+        </div>
+        @endif
+    </div>
+</div>
