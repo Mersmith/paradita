@@ -7,7 +7,12 @@
         <h2>Editar Compra</h2>
         <div class="cabecera_titulo_botones">
             <a href="#" class="g_boton g_boton_light">Inicio <i class="fa-solid fa-house"></i></a>
-            <a href="#" class="g_boton g_boton_primary">Guardar <i class="fa-solid fa-save"></i></a>
+
+            <a href="{{ route('compra-crear.vista.crear') }}" class="g_boton g_boton_primary">
+                Crear <i class="fa-solid fa-square-plus"></i></a>
+
+            <a href="{{ route('compra.vista.todas') }}" class="g_boton g_boton_darkt">
+                <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
     </div>
 
@@ -125,8 +130,9 @@
                 <button type="button" wire:click="agregarDetalle">➕ Agregar Producto</button>
                 @endif
 
-                <button type="submit" class="guardar" @disabled($estado =='confirmado' )>Guardar Cambios</button>
-            </div>
+                @if(count($estadosDisponibles) > 1)
+                <button type="submit" class="guardar" @disabled($estado=='confirmado' )>Guardar Cambios</button>
+                @endif </div>
         </form>
     </div>
 </div>

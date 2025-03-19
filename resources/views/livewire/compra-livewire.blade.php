@@ -18,6 +18,37 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
+    <div class="formulario">
+        <div class="g_fila">
+            <div class="g_columna_12">
+                <div class="g_panel">
+                    <div class="g_fila">
+                        <div class="g_columna_6">
+                            <div class="">
+                                <!-- FILTRO POR FECHAS -->
+                                <div class="tabla_cabecera_filtros">
+                                    <label for="fechaInicio">Desde:</label>
+                                    <input type="date" wire:model.live="fechaInicio" id="fechaInicio">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_6">
+                            <div class="">
+                                <!-- FILTRO POR FECHAS -->
+                                <div class="tabla_cabecera_filtros">
+                                    <label for="fechaFin">Hasta:</label>
+                                    <input type="date" wire:model.live="fechaFin" id="fechaFin">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--TABLA-->
     <div class="g_panel">
         @if ($compras->count())

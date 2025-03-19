@@ -12,7 +12,7 @@
                 "nombre": "Unidades",
                 "ruta": "unidad-medida.vista.todas",
                 "url": "/",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-weight-hanging",
                 "nivel": 2,
                 "submenus": []
             },
@@ -21,7 +21,7 @@
                 "nombre": "Producto",
                 "ruta": "producto.vista.todas",
                 "url": "/producto",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-apple-whole",
                 "nivel": 2,
                 "submenus": []
             },
@@ -30,7 +30,7 @@
                 "nombre": "Inventario",
                 "ruta": "inventario.vista.todas",
                 "url": "/inventario",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-boxes-packing",
                 "nivel": 2,
                 "submenus": []
             },
@@ -39,7 +39,7 @@
                 "nombre": "Compra",
                 "ruta": "compra.vista.todas",
                 "url": "/compra",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-bag-shopping",
                 "nivel": 2,
                 "submenus": []
             },
@@ -48,7 +48,7 @@
                 "nombre": "Venta",
                 "ruta": "venta-crear.vista.todas",
                 "url": "/venta-crear",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-money-bill-1-wave",
                 "nivel": 2,
                 "submenus": []
             }

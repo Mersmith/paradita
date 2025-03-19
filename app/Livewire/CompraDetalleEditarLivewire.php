@@ -51,7 +51,7 @@ class CompraDetalleEditarLivewire extends Component
         $transiciones = [
             'borrador' => ['borrador', 'confirmado'],
             'confirmado' => ['confirmado', 'cancelado', 'eliminado'],
-            'cancelado' => ['cancelado', 'eliminado'],
+            'cancelado' => ['cancelado'],
             'eliminado' => ['eliminado'],
         ];
 

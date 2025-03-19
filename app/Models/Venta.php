@@ -10,7 +10,7 @@ class Venta extends Model
     /** @use HasFactory<\Database\Factories\VentaFactory> */
     use HasFactory;
 
-    protected $fillable = ['fecha'];
+    protected $fillable = ['fecha', 'estado_venta', 'estado_sunat'];
 
     public function detalleVentas()
     {
