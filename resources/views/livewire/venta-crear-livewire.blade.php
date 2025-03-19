@@ -7,6 +7,11 @@
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
         <h2>Venta nueva</h2>
+        @if (session()->has('error'))
+        <div>
+            {{ session('error') }}
+        </div>
+        @endif
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
@@ -84,7 +89,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            
+
                             <tfoot>
                                 <tr>
                                     <td colspan="3"><strong>Total de registros: {{ count($detalles) }}</strong></td> <!-- Contador de filas -->
