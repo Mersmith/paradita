@@ -67,7 +67,8 @@
                             <th>Fecha</th>
                             <th>Monto Inicial</th>
                             <th>Monto Final</th>
-                            <th>Estado</th>
+                            <th>Estado Apertura</th>
+                            <th>Estado Cierre</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +82,19 @@
                                 <span class="g_estado_{{ $item->estado == 'abierta' ? 'activo' : 'inactivo' }}">
                                     {{ ucfirst($item->estado) }}
                                 </span>
+                            </td>
+
+                            <td>
+                                @if ($item->cierreCaja)
+                                <a href="{{ route('cerrar-caja-crear.vista.crear', ['id' => $item->id]) }}" class="g_boton g_boton_info">
+                                    Ver Cierre <i class="fa-solid fa-plus"></i>
+                                </a>
+                                S/ {{ number_format($item->cierreCaja->monto_contado, 2) }}
+                                @else
+                                <a href="{{ route('cerrar-caja-crear.vista.crear', ['id' => $item->id]) }}" class="g_boton g_boton_info">
+                                    Crear Cierre <i class="fa-solid fa-plus"></i>
+                                </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
