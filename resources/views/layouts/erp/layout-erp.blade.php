@@ -28,7 +28,10 @@
         <!--CONTENEDOR LAYOUT PAGINA-->
         <div class="contenedor_layout_pagina" :class="{ 'estilo_contenedor_layout_pagina': estadoNavAbierto }">
             <!--HEADER LAYOUT PAGINA-->
-           
+            <header class="header_layout_pagina">
+                <span class="layout_menu_hamburguesa_celular" x-on:click="toggleContenedorAside"><i
+                        class="fa-solid fa-bars"></i></span>
+            </header>
             <!--CONTENIDO LAYOUT PAGINA-->
             <div class="contenido_layout_pagina">
                 <div class="centrar_pagina" @hasSection('anchoPantalla') style="max-width: @yield('anchoPantalla')" @endif">

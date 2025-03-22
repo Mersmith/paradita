@@ -26,6 +26,9 @@ php artisan make:model HistorialPrecioCompra -mfsc
 php artisan make:model HistorialPrecioVenta -mfsc
 php artisan make:model HistorialPrecio -mfsc
 
+php artisan make:model AperturaCaja -mfsc
+
+
 *****************************************************************
 
 composer require laravel/jetstream
@@ -53,3 +56,7 @@ php artisan make:livewire CompraCrearLivewire
 
 php artisan make:livewire VentaLivewire
 php artisan make:livewire VentaCrearLivewire
+
+php artisan make:livewire AperturaCajaLivewire
+php artisan make:livewire AperturaCajaCrearLivewire
+

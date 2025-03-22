@@ -14,6 +14,8 @@ use App\Livewire\CompraDetalleEditarLivewire;
 use App\Livewire\CompraCrearLivewire;
 use App\Livewire\VentaLivewire;
 use App\Livewire\VentaCrearLivewire;
+use App\Livewire\AperturaCajaLivewire;
+use App\Livewire\AperturaCajaCrearLivewire;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -46,3 +48,6 @@ Route::get('/compra/editar/{id}/detalle', CompraDetalleEditarLivewire::class)->n
 
 Route::get('/venta', VentaLivewire::class)->name('venta.vista.todas');//ok
 Route::get('/venta-crear', VentaCrearLivewire::class)->name('venta-crear.vista.crear');//ok
+
+Route::get('/apertura-caja', AperturaCajaLivewire::class)->name('apertura-caja.vista.todas');//ok
+Route::get('/apertura-caja/crear', AperturaCajaCrearLivewire::class)->name('apertura-caja-crear.vista.crear');//ok

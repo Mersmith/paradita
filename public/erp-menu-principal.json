@@ -51,6 +51,15 @@
                 "icono": "fa-solid fa-money-bill-1-wave",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 16,
+                "nombre": "Caja",
+                "ruta": "apertura-caja.vista.todas",
+                "url": "/apertura-caja",
+                "icono": "fa-solid fa-cash-register",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }
